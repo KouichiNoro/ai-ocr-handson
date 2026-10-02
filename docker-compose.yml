@@ -1,0 +1,35 @@
+# 研修用。完成版アプリと Claude Code が 1 つのコンテナで動く。
+# 通常は start.sh（Windows は start.bat）から呼ばれる。
+services:
+  app:
+    image: ghcr.io/${GHCR_OWNER:-kouichinoro}/ai-ocr-handson:${IMAGE_TAG:-latest}
+    container_name: ai-ocr-handson
+    ports:
+      - "3000:3000"
+    env_file:
+      # 初回は .env がまだ無いため、無くても起動できるようにしておく
+      - path: .env
+        required: false
+    environment:
+      # Claude Code が使うモデル。講師が .env の CLAUDE_MODEL で切り替える（アプリの読み取りには影響しない）
+      ANTHROPIC_MODEL: ${CLAUDE_MODEL:-claude-sonnet-5}
+    volumes:
+      # ソースと登録した書類をまとめて保存する。初回はイメージの中身が自動で入る。
+      # コンテナを作り直しても残り、reset で配布時の状態に戻せる
+      - handson-workspace:/workspace
+    restart: unless-stopped
+
+  # 設定の確認。docker compose run --rm check
+  check:
+    image: ghcr.io/${GHCR_OWNER:-kouichinoro}/ai-ocr-handson:${IMAGE_TAG:-latest}
+    profiles:
+      - tools
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - handson-workspace:/workspace
+    command: ["node", "/usr/local/lib/handson/check.mjs"]
+
+volumes:
+  handson-workspace:

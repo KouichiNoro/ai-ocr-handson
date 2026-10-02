@@ -1,0 +1,4 @@
+# Windows の cmd は LF だけの .bat で誤動作することがあるため CRLF に固定する
+*.bat text eol=crlf
+# Mac / Linux の sh は CRLF だと動かないため LF に固定する
+*.sh  text eol=lf
