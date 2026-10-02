@@ -1,14 +1,16 @@
 @echo off
-chcp 65001 >nul
+rem “ú–{Œê”Å Windows ‚Ì cmd ‚Í UTF-8 ‚Ìƒoƒbƒ`‚ð³‚µ‚­ˆµ‚¦‚È‚¢‚½‚ßA‚±‚Ìƒtƒ@ƒCƒ‹‚Í Shift_JISiCP932j‚Å•Û‘¶‚µ‚Ä‚¢‚é
 cd /d "%~dp0"
 set "KEY_NOW="
 if exist .env for /f "tokens=1,* delims==" %%A in ('findstr /b "ANTHROPIC_API_KEY=" .env') do set "KEY_NOW=%%B"
 if not defined KEY_NOW (
-  echo API ã‚­ãƒ¼ãŒã¾ã è¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚start.bat ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€è¬›å¸«ã‹ã‚‰å—ã‘å–ã£ãŸã‚­ãƒ¼ã‚’è²¼ã‚Šä»˜ã‘ã¦ãã ã•ã„ã€‚
+  echo API ƒL[‚ª‚Ü‚¾Ý’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñBstart.bat ‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚ÄAuŽt‚©‚çŽó‚¯Žæ‚Á‚½ƒL[‚ð“\‚è•t‚¯‚Ä‚­‚¾‚³‚¢B
   pause
   exit /b 1
 )
-rem ã‚¢ãƒ—ãƒªãŒæ­¢ã¾ã£ã¦ã„ã‚Œã°å…ˆã«èµ·å‹•ã™ã‚‹
+rem ƒAƒvƒŠ‚ªŽ~‚Ü‚Á‚Ä‚¢‚ê‚Îæ‚É‹N“®‚·‚é
 docker compose up -d app >nul
+rem Claude Code ‚Í“ú–{Œê‚ð UTF-8 ‚Åo‚·‚Ì‚ÅA‚±‚±‚ÅØ‚è‘Ö‚¦‚éB‚±‚ê‚æ‚èŒã‚ë‚Ìs‚Í‰p”Žš‚¾‚¯‚É‚·‚é
+chcp 65001 >nul
 docker compose exec app claude %*
 pause

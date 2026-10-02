@@ -1,4 +1,5 @@
-# Windows の cmd は LF だけの .bat で誤動作することがあるため CRLF に固定する
+# Windows の cmd は LF だけの .bat で誤動作することがあるため CRLF に固定する。
+# .bat は日本語版 Windows で文字化けしないよう Shift_JIS（CP932）で保存している。UTF-8 で保存し直さないこと
 *.bat text eol=crlf
 # Mac / Linux の sh は CRLF だと動かないため LF に固定する
 *.sh  text eol=lf

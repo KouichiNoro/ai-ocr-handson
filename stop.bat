@@ -1,6 +1,6 @@
 @echo off
-chcp 65001 >nul
+rem “ú–{Œê”Å Windows ‚Ì cmd ‚Í UTF-8 ‚Ìƒoƒbƒ`‚ð³‚µ‚­ˆµ‚¦‚È‚¢‚½‚ßA‚±‚Ìƒtƒ@ƒCƒ‹‚Í Shift_JISiCP932j‚Å•Û‘¶‚µ‚Ä‚¢‚é
 cd /d "%~dp0"
 docker compose stop
-echo æ­¢ã‚ã¾ã—ãŸã€‚å†é–‹ã™ã‚‹ã¨ãã¯ start.bat ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚
+echo Ž~‚ß‚Ü‚µ‚½BÄŠJ‚·‚é‚Æ‚«‚Í start.bat ‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
 pause

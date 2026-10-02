@@ -1,35 +1,35 @@
 @echo off
-chcp 65001 >nul
+rem “ú–{Œê”Å Windows ‚Ì cmd ‚Í UTF-8 ‚Ìƒoƒbƒ`‚ð³‚µ‚­ˆµ‚¦‚È‚¢‚½‚ßA‚±‚Ìƒtƒ@ƒCƒ‹‚Í Shift_JISiCP932j‚Å•Û‘¶‚µ‚Ä‚¢‚é
 setlocal
 cd /d "%~dp0"
 
 echo.
 echo ==============================================
-echo   AI-OCR ãƒãƒ³ã‚ºã‚ªãƒ³
+echo   AI-OCR ƒnƒ“ƒYƒIƒ“
 echo ==============================================
 echo.
 
 docker info >nul 2>&1
 if errorlevel 1 (
-  echo Docker Desktop ãŒèµ·å‹•ã—ã¦ã„ã¾ã›ã‚“ã€‚
-  echo Docker Desktop ã‚’èµ·å‹•ã—ã¦ã€ã‚¯ã‚¸ãƒ©ã®ã‚¢ã‚¤ã‚³ãƒ³ãŒå‹•ãçµ‚ã‚ã‚‹ã¾ã§å¾…ã£ã¦ã‹ã‚‰ã€
-  echo ã‚‚ã†ä¸€åº¦ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚
+  echo Docker Desktop ‚ª‹N“®‚µ‚Ä‚¢‚Ü‚¹‚ñB
+  echo Docker Desktop ‚ð‹N“®‚µ‚ÄAƒNƒWƒ‰‚ÌƒAƒCƒRƒ“‚ª“®‚«I‚í‚é‚Ü‚Å‘Ò‚Á‚Ä‚©‚çA
+  echo ‚à‚¤ˆê“x‚±‚Ìƒtƒ@ƒCƒ‹‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
   echo.
   pause
   exit /b 1
 )
 
-rem ã‚­ãƒ¼ãŒæœªè¨­å®šãªã‚‰èžãã€‚ã‚­ãƒ¼ã¯ç ”ä¿®å½“æ—¥ã«é…ã‚‹ãŸã‚ã€äº‹å‰èª²é¡Œã§ã¯ç©ºã®ã¾ã¾é€²ã‚ã‚‰ã‚Œã‚‹ã‚ˆã†ã«ã—ã¦ã‚ã‚‹
+rem ƒL[‚ª–¢Ý’è‚È‚ç•·‚­BƒL[‚ÍŒ¤C“–“ú‚É”z‚é‚½‚ßAŽ–‘O‰Û‘è‚Å‚Í‹ó‚Ì‚Ü‚Üi‚ß‚ç‚ê‚é‚æ‚¤‚É‚µ‚Ä‚ ‚é
 set "KEY_NOW="
 if exist .env for /f "tokens=1,* delims==" %%A in ('findstr /b "ANTHROPIC_API_KEY=" .env') do set "KEY_NOW=%%B"
 if not defined KEY_NOW (
-  echo API ã‚­ãƒ¼ã‚’è¨­å®šã—ã¾ã™ã€‚
-  echo è¬›å¸«ã‹ã‚‰å—ã‘å–ã£ãŸã‚­ãƒ¼ï¼ˆsk-ant- ã§å§‹ã¾ã‚‹æ–‡å­—åˆ—ï¼‰ã‚’è²¼ã‚Šä»˜ã‘ã¦ã€Enter ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚
-  echo ï¼ˆè²¼ã‚Šä»˜ã‘ã¦ã‚‚ç”»é¢ã«ã¯è¡¨ç¤ºã•ã‚Œã¾ã›ã‚“ã€‚å³ã‚¯ãƒªãƒƒã‚¯ã§è²¼ã‚Šä»˜ã‘ã‚‰ã‚Œã¾ã™ï¼‰
-  echo ã¾ã å—ã‘å–ã£ã¦ã„ãªã„å ´åˆï¼ˆäº‹å‰èª²é¡Œã®ã¨ãï¼‰ã¯ã€ä½•ã‚‚å…¥åŠ›ã›ãšã« Enter ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚
+  echo API ƒL[‚ðÝ’è‚µ‚Ü‚·B
+  echo uŽt‚©‚çŽó‚¯Žæ‚Á‚½ƒL[isk-ant- ‚ÅŽn‚Ü‚é•¶Žš—ñj‚ð“\‚è•t‚¯‚ÄAEnter ‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B
+  echo i“\‚è•t‚¯‚Ä‚à‰æ–Ê‚É‚Í•\Ž¦‚³‚ê‚Ü‚¹‚ñB‰EƒNƒŠƒbƒN‚Å“\‚è•t‚¯‚ç‚ê‚Ü‚·j
+  echo ‚Ü‚¾Žó‚¯Žæ‚Á‚Ä‚¢‚È‚¢ê‡iŽ–‘O‰Û‘è‚Ì‚Æ‚«j‚ÍA‰½‚à“ü—Í‚¹‚¸‚É Enter ‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B
   set "KEY="
   for /f "usebackq delims=" %%K in (`powershell -NoProfile -Command "$s = Read-Host -AsSecureString '>'; [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($s))"`) do set "KEY=%%K"
-  rem è¬›å¸«ãŒ CLAUDE_MODEL ãªã©ã‚’æ›¸ãæ›ãˆã¦ã„ã¦ã‚‚æ®‹ã‚‹ã‚ˆã†ã€æ—¢å­˜ã® .env ãŒã‚ã‚Œã°ãã‚Œã‚’å…ƒã«ã™ã‚‹
+  rem uŽt‚ª CLAUDE_MODEL ‚È‚Ç‚ð‘‚«Š·‚¦‚Ä‚¢‚Ä‚àŽc‚é‚æ‚¤AŠù‘¶‚Ì .env ‚ª‚ ‚ê‚Î‚»‚ê‚ðŒ³‚É‚·‚é
   if exist .env (findstr /v /b "ANTHROPIC_API_KEY=" .env > .env.tmp) else (findstr /v /b "ANTHROPIC_API_KEY=" .env.example > .env.tmp)
   call echo ANTHROPIC_API_KEY=%%KEY%%>> .env.tmp
   move /y .env.tmp .env >nul
@@ -37,24 +37,24 @@ if not defined KEY_NOW (
   echo.
 )
 
-echo æœ€æ–°ã®ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ç¢ºèªã—ã¦ã„ã¾ã™ï¼ˆåˆå›žã¯ 5ã€œ10 åˆ†ã‹ã‹ã‚Šã¾ã™ï¼‰â€¦
-rem å–å¾—ã«å¤±æ•—ã—ã¦ã‚‚ã€æ‰‹å…ƒã«ã‚¤ãƒ¡ãƒ¼ã‚¸ãŒã‚ã‚Œã°ãã®ã¾ã¾èµ·å‹•ã™ã‚‹
+echo ÅV‚ÌƒCƒ[ƒW‚ðŠm”F‚µ‚Ä‚¢‚Ü‚·i‰‰ñ‚Í 5`10 •ª‚©‚©‚è‚Ü‚·jc
+rem Žæ“¾‚ÉŽ¸”s‚µ‚Ä‚àAŽèŒ³‚ÉƒCƒ[ƒW‚ª‚ ‚ê‚Î‚»‚Ì‚Ü‚Ü‹N“®‚·‚é
 docker compose pull app
 docker compose up -d app
 if errorlevel 1 (
-  echo èµ·å‹•ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚ç”»é¢ã‚’ãã®ã¾ã¾æ’®å½±ã—ã¦è¬›å¸«ã«ãŠé€ã‚Šãã ã•ã„ã€‚
+  echo ‹N“®‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B‰æ–Ê‚ð‚»‚Ì‚Ü‚ÜŽB‰e‚µ‚ÄuŽt‚É‚¨‘—‚è‚­‚¾‚³‚¢B
   pause
   exit /b 1
 )
 
-echo ã‚¢ãƒ—ãƒªã®èµ·å‹•ã‚’å¾…ã£ã¦ã„ã¾ã™â€¦
+echo ƒAƒvƒŠ‚Ì‹N“®‚ð‘Ò‚Á‚Ä‚¢‚Ü‚·c
 set /a TRIES=0
 :wait
 curl -s -o NUL http://localhost:3000/
 if not errorlevel 1 goto ready
 set /a TRIES+=1
 if %TRIES% gtr 90 (
-  echo èµ·å‹•ã«æ™‚é–“ãŒã‹ã‹ã£ã¦ã„ã¾ã™ã€‚è¬›å¸«ã«ã”é€£çµ¡ãã ã•ã„ã€‚
+  echo ‹N“®‚ÉŽžŠÔ‚ª‚©‚©‚Á‚Ä‚¢‚Ü‚·BuŽt‚É‚²˜A—‚­‚¾‚³‚¢B
   pause
   exit /b 1
 )
@@ -63,18 +63,20 @@ goto wait
 
 :ready
 echo.
-echo ã‚¢ãƒ—ãƒªãŒèµ·å‹•ã—ã¾ã—ãŸ: http://localhost:3000
+echo ƒAƒvƒŠ‚ª‹N“®‚µ‚Ü‚µ‚½: http://localhost:3000
 start "" http://localhost:3000
 echo.
 if not defined KEY_NOW (
-  echo API ã‚­ãƒ¼ãŒã¾ã è¨­å®šã•ã‚Œã¦ã„ãªã„ãŸã‚ã€Claude Code ã¯é–‹ãã¾ã›ã‚“ã€‚
-  echo ç ”ä¿®å½“æ—¥ã€è¬›å¸«ã‹ã‚‰ã‚­ãƒ¼ã‚’å—ã‘å–ã£ãŸã‚‰ã€ã‚‚ã†ä¸€åº¦ start.bat ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚
+  echo API ƒL[‚ª‚Ü‚¾Ý’è‚³‚ê‚Ä‚¢‚È‚¢‚½‚ßAClaude Code ‚ÍŠJ‚«‚Ü‚¹‚ñB
+  echo Œ¤C“–“úAuŽt‚©‚çƒL[‚ðŽó‚¯Žæ‚Á‚½‚çA‚à‚¤ˆê“x start.bat ‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‚­‚¾‚³‚¢B
   echo.
   pause
   exit /b 0
 )
-echo ç¶šã‘ã¦ Claude Code ã‚’é–‹ãã¾ã™ã€‚æ—¥æœ¬èªžã§æŒ‡ç¤ºã‚’æ›¸ã„ã¦ Enter ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚
-echo çµ‚ã‚ã‚‹ã¨ãã¯ /exit ã¨å…¥åŠ›ã—ã¾ã™ã€‚ã‚‚ã†ä¸€åº¦é–‹ãã¨ãã¯ claude.bat ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚
+echo ‘±‚¯‚Ä Claude Code ‚ðŠJ‚«‚Ü‚·B“ú–{Œê‚ÅŽwŽ¦‚ð‘‚¢‚Ä Enter ‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B
+echo I‚í‚é‚Æ‚«‚Í /exit ‚Æ“ü—Í‚µ‚Ü‚·B‚à‚¤ˆê“xŠJ‚­‚Æ‚«‚Í claude.bat ‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ü‚·B
 echo.
+rem Claude Code ‚Í“ú–{Œê‚ð UTF-8 ‚Åo‚·‚Ì‚ÅA‚±‚±‚ÅØ‚è‘Ö‚¦‚éB‚±‚ê‚æ‚èŒã‚ë‚Ìs‚Í‰p”Žš‚¾‚¯‚É‚·‚é
+chcp 65001 >nul
 docker compose exec app claude
 pause
