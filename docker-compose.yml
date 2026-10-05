@@ -1,5 +1,11 @@
 # 研修用。完成版アプリと Claude Code が 1 つのコンテナで動く。
 # 通常は start.sh（Windows は start.bat）から呼ばれる。
+
+# 名前を固定し、どのフォルダから起動しても同じコンテナと保存先を使う。
+# 固定しないとフォルダ名ごとに別扱いになり、ZIP を取り直して「ai-ocr-handson-main 2」などから
+# 起動したときに、container_name が既存のコンテナとぶつかって起動できなくなる
+name: ai-ocr-handson
+
 services:
   app:
     image: ghcr.io/${GHCR_OWNER:-kouichinoro}/ai-ocr-handson:${IMAGE_TAG:-latest}
